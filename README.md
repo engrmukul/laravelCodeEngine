@@ -1,9 +1,6 @@
 # laravelCodeEngine
 Laravel Project starter for laravel developer
 
-# Using
-INSPINIA - Responsive Admin Theme
-
    # Instructions
  
      /**
