@@ -5,9 +5,9 @@ Laravel Project starter for laravel developer
 INSPINIA - Responsive Admin Theme
 
 # Instructions 
-# Clone project
-# Create database and config by .env
-# Create migration for your table like 
+/* Clone project */
+/* Create database and config by .env  */
+/* Create migration for your table like  */ 
 
     /**
      * Run the migrations.
@@ -66,10 +66,10 @@ INSPINIA - Responsive Admin Theme
         Schema::dropIfExists('items');
     }
 
-# php artisan migrate
-# php artisan make:module ( table name  )
-# php artisan serve
+/* php artisan migrate */
+/* php artisan make:module ( table name  )  */
+/* php artisan serve */
 
-# run http://127.0.0.1:8000/grid/units
+/* run http://127.0.0.1:8000/grid/units  */
 
 
