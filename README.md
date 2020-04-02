@@ -4,18 +4,16 @@ Laravel Project starter for laravel developer
 # Using
 INSPINIA - Responsive Admin Theme
 
-# Instructions 
-/** 
-    * Clone project 
-    * Create database and config by .env 
-    * Create migration for your table like  
- */ 
-
-    /**
-     * Run the migrations.
-     *
-     * @return void
+   # Instructions
+ 
+     /**
+     * Clone project 
+     * Create database and config by .env 
+     * Create migration for your table like  
      */
+
+      -----------------    units Table  ------------------ 
+
     public function up()
     {
         Schema::create('units', function (Blueprint $table) {
@@ -28,22 +26,13 @@ INSPINIA - Responsive Admin Theme
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('units');
     }
     
-        /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    -----------------    items Table  ------------------ 
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
@@ -58,21 +47,16 @@ INSPINIA - Responsive Admin Theme
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('items');
     }
 
-/**
-    * php artisan migrate
-    * php artisan make:module ( table name  )
-    * php artisan serve
-    * run http://127.0.0.1:8000/grid/units  
-   */
+      /**
+       * php artisan migrate
+       * php artisan make:module ( table name  )
+       * php artisan serve
+       * run http://127.0.0.1:8000/grid/units  
+      */
 
 
