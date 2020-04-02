@@ -13,7 +13,7 @@ INSPINIA - Responsive Admin Theme
      * Create migration for your table like  
      */
 
-      -----------------    units Table  ------------------ 
+      -----------------    units Table (Already added) ------------------ 
 
     public function up()
     {
@@ -33,7 +33,7 @@ INSPINIA - Responsive Admin Theme
         Schema::dropIfExists('units');
     }
     
-    -----------------    items Table  ------------------ 
+    -----------------    items Table (Already added) ------------------ 
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
