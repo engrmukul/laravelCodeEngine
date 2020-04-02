@@ -8,6 +8,7 @@ INSPINIA - Responsive Admin Theme
  
      /**
      * Clone project 
+     * composer install
      * Create database and config by .env 
      * Create migration for your table like  
      */
