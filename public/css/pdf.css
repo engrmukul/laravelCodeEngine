@@ -1,0 +1,54 @@
+.pdf_table{
+    width:100%;
+}
+
+.cell_left{
+    text-align: left;
+}
+.cell_right{
+    text-align: right;
+}
+
+.pdf_table_border{
+    border-collapse: collapse;
+}
+
+table.pdf_table_border th, table.pdf_table_border td{
+    width:100%;
+    border:1px solid #ccc;
+}
+
+.pdfparentforleftright{
+    overflow: hidden;
+    width:100%;
+}
+.pdfleft{
+    float: left;
+    width:40%;
+}
+.pdfright{
+    float: right;
+    width:55%;
+}
+<<<<<<< HEAD
+=======
+
+/*
+ * Style Write by Abu Bakar Siddique
+ * @ 13-01-2019
+ */
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th{
+    font-size: 13px;
+    font-weight: 700;
+}
+
+td{
+    font-size:0.2em;
+    font-weight: 400;
+    color: #f00;
+}
+>>>>>>> 808dd6d35e2fe17f894f1d8098529992fdcdc167

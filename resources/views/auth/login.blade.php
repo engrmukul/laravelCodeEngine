@@ -1,73 +1,137 @@
-@extends('layouts.auth')
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LARAVEL CODE ENGINE</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+</head>
+<body class="gray-bg">
+<div class="loginColumns animated fadeInDown">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox-content">
+                <h2><strong>LARAVEL CODE ENGINE</strong></h2>
+                <span>GROW WITH EASY</span>
+                <form class="m-t" role="form" method="POST" action="{{ route('login') }}" id="loginFrm">
+                    {{ csrf_field() }}
+                    <div class="input-group m-b">
+                        <div class="input-group-prepend">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                        <input id="email" type="email" placeholder="username or email"
+                               class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                               value="{{ old('email') }}" required autofocus>
+                        @if ($errors->has('email'))
+                            <span class="invalid-feedback">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                    <div class="input-group m-b">
+                        <div class="input-group-prepend">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                        <input id="password" type="password" placeholder="password"
+                               class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
+                               required>
+                        @if ($errors->has('password'))
+                            <span class="invalid-feedback">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                        @endif
+                    </div>
+                    @if(session()->get('multi_log_message'))
+                        <div class="alert alert-danger alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <span class="error_message_multi">{{ session()->get('multi_log_message') }}</span>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success multi_log_action" action_type="no"
+                                        data-dismiss="modal">No
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                                <a class="btn btn-primary btn-ok multi_log_action" action_type="yes">Yes</a>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    @endif
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
+                        </div>
+                    </div><br>
+
+                    <div class="row">
+                        <div class="col-sm-6 text-left">
+                            <a class="forget-pass"
+                               href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+                        </div>
+                        <div class="remember_me col-sm-6 text-right">
+                            <input class="custom-check" type="checkbox" tabindex="3" value="remember-me" id="remember_me">
+                            <label for="remember_me">Remember Me</label>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-@endsection
+
+</body>
+
+</html>
+
+
+<script src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.js')}}"></script>
+<script>
+    $(document).on('click', '.multi_log_action', function (e) {
+        e.preventDefault();
+        var action_type = $(this).attr('action_type');
+        if (action_type == 'no') {
+            $('.alert').hide();
+        } else {
+            $.ajax({
+                type: "POST",
+                url: '{{URL::to("multi-login-action")}}',
+                data: $('#loginFrm').serialize(),
+                success: function (response) {
+                    if (response == true) {
+                        $('#loginFrm').submit();
+                    } else {
+                        $('.alert').show();
+                        $('.error_message_multi').text('You are not this person.');
+                    }
+                }
+            });
+        }
+    });
+
+    //remember me section
+    $(function () {
+        if (localStorage.chkbx && localStorage.chkbx != '') {
+            $('#remember_me').attr('checked', 'checked');
+            $('#email').val(localStorage.usrname);
+        } else {
+            $('#remember_me').removeAttr('checked');
+            $('#loginEmail').val('');
+        }
+
+        $('#remember_me').click(function () {
+            if ($('#remember_me').is(':checked')) {
+                localStorage.usrname = $('#email').val();
+                localStorage.chkbx = $('#remember_me').val();
+            } else {
+                localStorage.usrname = '';
+                localStorage.chkbx = '';
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
+
