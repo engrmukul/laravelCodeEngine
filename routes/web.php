@@ -23,6 +23,9 @@ Route::get('/', function () {
 /*=============================================HOME====================================================*/
 Route::get('/home', 'HomeController@index')->name('home');
 
+/*================================= SYSTEM ACCESS ==========================================*/
+Route::get('/moduleChanger/{id}/{is_have_default_id?}', 'ModuleController@moduleChanger')->name('moduleChanger');
+
 /*================================= USER AUTHENTICATION ==========================================*/
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 Auth::routes();
@@ -45,6 +48,12 @@ Route::post('profile', 'User\UserController@getUserProfile')->name('get-user-pro
 Route::match(['get', 'post'], 'user-list', 'User\UserController@List')->name('user-list');
 Route::get('user-entry/{id?}', 'User\UserController@entryForm')->name('user-entry');
 Route::match(['get', 'post'], 'store-user-info', 'User\UserController@storeUser')->name('store-user-info');
+
+/*===============================User Profile========================*/
+Route::get('profile', 'User\UserController@getUserProfiles')->name('getUserProfile');
+Route::post('update-user-profile', 'User\UserController@updateUserProfile')->name('update-user-profile');
+Route::get('reset_password', 'User\UserController@resetUserPassword')->name('resetPassword');
+Route::post('reset-password-submit', 'User\UserController@resetPasswordSubmit');
 
 /*================================ MENU MANAGER ========================================*/
 Route::get('menu_list', 'MenuManagement@menu_list')->name('menu_list');

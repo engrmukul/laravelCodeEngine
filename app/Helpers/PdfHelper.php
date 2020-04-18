@@ -90,7 +90,7 @@ class PdfHelper
     public static function defaultHeader($data){
         return $default_header = array (
             'L' => array (
-                'content'=>'<img class="img-responsive" style="height:60px; width:140px; margin-bottom: 5px" src="public/img/srcil_logo2.png" alt=""/>'
+                'content'=>'<img class="img-responsive" style="height:60px; width:140px; margin-bottom: 5px" src="assets/img/lce.png" alt=""/>'
             ),
             'R' => array (
                 'content'=>'<i>Print Date : '.date("d-M-Y").'</i>',

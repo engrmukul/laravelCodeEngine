@@ -10,7 +10,7 @@ use Request;
 class MasterController extends Controller {
     public function __construct(){
         $this->middleware('auth');
-        //$this->middleware('menu_permission');
+        $this->middleware('menu_permission');
     }
 
     public function index(Request $request) {

@@ -76,7 +76,7 @@ class LoginController extends Controller {
 
     public function userLevelInfoQuery($user_id){
         $query = DB::table('sys_user_levels');
-        $query->where('id', function($squery) use ($user_id){
+        $query->where('sys_user_levels_id', function($squery) use ($user_id){
             $squery->select('user_levels_id');
             $squery->from('sys_privilege_levels');
             $squery->where('users_id',$user_id);
@@ -253,10 +253,10 @@ class LoginController extends Controller {
         $extr_deny_menu = !empty($menu_user_priv) ? $menu_user_priv->exclude_menu : '';
 
         $user_level_string = implode(',', $user_levels);
-        $selection = "(SELECT sys_menus.id";
+        $selection = "(SELECT sys_menus.sys_menus_id";
         $sql = $selection;
         $sql .= " FROM sys_privilege_menus";
-        $sql .= " INNER JOIN sys_menus ON sys_privilege_menus.menus_id = sys_menus.id";
+        $sql .= " INNER JOIN sys_menus ON sys_privilege_menus.menus_id = sys_menus.sys_menus_id";
         $sql .= " WHERE 1";
         if(!empty($extr_deny_menu)){
             $sql .= " AND sys_privilege_menus.menus_id NOT IN ( {$extr_deny_menu} )";
@@ -268,18 +268,18 @@ class LoginController extends Controller {
             $sql .= $selection;
             $sql .= " FROM sys_menus";
             $sql .= " WHERE 1";
-            $sql .= " AND sys_menus.`id` IN ( {$extr_pr_menu} ))";
+            $sql .= " AND sys_menus.`sys_menus_id` IN ( {$extr_pr_menu} ))";
         }
         $menuList = DB::select(DB::raw($sql));
         $menus_arr = [];
         foreach ($menuList as $menus){
-            $menus_arr[] = $menus->id;
+            $menus_arr[] = $menus->sys_menus_id;
         }
         return implode(',' , $menus_arr);
     }
 
     function getModuleLang($module_id){
-        $module_lang = DB::table('sys_modules')->where('id',$module_id)->get()->first()->name;
+        $module_lang = DB::table('sys_modules')->where('sys_modules_id',$module_id)->get()->first()->sys_modules_name;
         return $module_lang;
     }
 }

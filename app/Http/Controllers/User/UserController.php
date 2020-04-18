@@ -229,15 +229,6 @@ class UserController extends Controller
     }
 
     function storeUser(Request $request){
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|unique:sys_users',
-        ]);
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()->first()
-            ]);
-        }
         $user_arr = array(
             'name'=>$request->name,
             'email'=>$request->email,

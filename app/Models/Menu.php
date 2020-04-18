@@ -20,7 +20,7 @@ class Menu extends Model
     *
     * @var string
     */
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'sys_menus_id';
 
     /**
      * Attributes that should be mass-assignable.
@@ -28,11 +28,11 @@ class Menu extends Model
      * @var array
      */
     protected $fillable = [
-                  'name',
+                  'sys_menus_name',
                   'menus_description',
                   'menus_type',
-                  'parent_menus_id',
-                  'modules_id',
+                  'parent_sys_menus_id',
+                  'sys_modules_id',
                   'icon_class',
                   'menu_url',
                   'sort_number',
@@ -60,7 +60,7 @@ class Menu extends Model
      */
     public function parentMenu()
     {
-        return $this->belongsTo('App\Models\Menu','parent_menus_id');
+        return $this->belongsTo('App\Models\Menu','parent_sys_menus_id');
     }
 
     /**
@@ -68,7 +68,7 @@ class Menu extends Model
      */
     public function module()
     {
-        return $this->belongsTo('App\Models\Module','modules_id');
+        return $this->belongsTo('App\Models\Module','sys_modules_id');
     }
 
     /**

@@ -10,7 +10,6 @@ class MenuPermission extends Middleware {
         //
     ];
     public function handle($request, Closure $next, $guard = null){
-//        debug(Session::all());
         $uri_segments = request()->segments();
         $menu_id = 0;
         $session_menus = explode(',', Session::get('MENUS'));
@@ -19,7 +18,7 @@ class MenuPermission extends Middleware {
             $all_segment = implode('/', $segment_arr);
             $menu = Menu::where('menu_url', $all_segment)->first();
             if(!empty($menu)){
-                $menu_id = $menu->id;
+                $menu_id = $menu->sys_menus_id;
                 break;
             }
         }

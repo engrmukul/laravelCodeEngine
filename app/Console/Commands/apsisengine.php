@@ -101,24 +101,27 @@ class apsisengine extends Command
                     } else if (in_array($field_type, ['int']) && $field->Key != 'PRI') {
                         $field_arr = explode('_', $field->Field);
                         if (end($field_arr) == 'id') {
+                            $parent = (reset($field_arr) == 'parent') ? reset($field_arr) : "" ;
                             $input_type = "dropdown";
-                            $dropdown_key = rtrim($field->Field, '_id');
-                            $dropdown_slug_info = Dropdown::where('dropdown_slug', '=', $dropdown_key)->first();
+                            $dropdown_key = $parent ?  ltrim(ltrim(rtrim($field->Field, '_id'), 'parent'), '_')  : rtrim($field->Field, '_id') ;
+                            $dropdown_slug = rtrim($field->Field, '_id');
+                            $dropdown_slug_info = Dropdown::where('dropdown_slug', '=', $dropdown_slug)->first();
                             if (!empty($dropdown_slug_info)) {
                                 $dropdown_slug = $dropdown_slug_info->dropdown_slug;
                             } else {
                                 $dropdown_insert_arr = array(
-                                    'dropdown_slug' => $dropdown_key,
+                                    'dropdown_slug' => $dropdown_slug,
                                     'sqltext' => "SELECT " . $dropdown_key . "_id, " . $dropdown_key . "_name FROM " . $dropdown_key . " WHERE `status` = 'Active'",
                                     'value_field' => $dropdown_key . "_id",
                                     'option_field' => $dropdown_key . "_name",
                                     'multiple' => 0,
                                     'dropdown_name' => $dropdown_key . "_id",
                                     'description' => '',
+                                    'created_at' => date('Y-m-d'),
                                     'status' => 'Active'
                                 );
                                 DB::table('sys_dropdowns')->insert($dropdown_insert_arr);
-                                $dropdown_slug = $dropdown_key;
+                                //$dropdown_slug = $dropdown_key;
                             }
                         } else {
                             $input_type = "text";

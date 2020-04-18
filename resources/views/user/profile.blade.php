@@ -9,7 +9,7 @@
                     </div>
                     <div>
                         <div class="ibox-content no-padding border-left-right">
-                            <img alt="image" class="img-fluid" src="{{asset('public/img/profile_big.jpg')}}">
+                            <img alt="image" class="img-fluid" src="{{asset('assets/img/profile_big.jpg')}}">
                         </div>
                         <div class="ibox-content profile-content">
                             <h4><strong>Monica Smith</strong></h4>

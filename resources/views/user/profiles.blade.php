@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <link rel="stylesheet" href="{{asset('public/css/plugins/datepicker/datepicker3.css')}}">
-    <script src="{{asset('public/js/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('assets/css/plugins/datepicker/datepicker3.css')}}">
+    <script src="{{asset('assets/js/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
     <div class="wrapper wrapper-content animated fadeIn">
         <div class="row">
             <div class="col-md-12">
@@ -41,9 +41,9 @@
                                                     <?php
                                                         if($pageData['record']['user_image']) {
                                                      ?>
-                                                        <img src="{{asset('public'.$pageData['record']['user_image'])}}" id="select_img" class="select_image img-rounded" name="user_image" alt="Select Image" onclick="_upload()" style="height: 200px;width: 170px;">
+                                                        <img src="{{asset('assets'.$pageData['record']['user_image'])}}" id="select_img" class="select_image img-rounded" name="user_image" alt="Select Image" onclick="_upload()" style="height: 200px;width: 170px;">
                                                      <?php   } else {?>
-                                                        <img src="{{asset('public/img/users/Avatar.png')}}" id="select_img" class="select_image img-rounded" alt="Select Image" onclick="_upload()" style="height: 200px;width: 170px;">
+                                                        <img src="{{asset('assets/img/users/Avatar.png')}}" id="select_img" class="select_image img-rounded" alt="Select Image" onclick="_upload()" style="height: 200px;width: 170px;">
                                                      <?php   }
 
                                                      ?>

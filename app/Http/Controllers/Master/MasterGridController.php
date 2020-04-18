@@ -12,7 +12,7 @@ use View;
 class MasterGridController extends Controller {
     public function __construct(){
         $this->middleware('auth');
-        //$this->middleware('menu_permission');
+        $this->middleware('menu_permission');
     }
     public function getGrid($gridName = ''){
         $data = self::gridPageInfo($gridName);

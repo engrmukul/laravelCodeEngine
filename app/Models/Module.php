@@ -20,7 +20,7 @@ class Module extends Model
     *
     * @var string
     */
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'sys_modules_id';
 
     /**
      * Attributes that should be mass-assignable.
@@ -28,7 +28,7 @@ class Module extends Model
      * @var array
      */
     protected $fillable = [
-                  'name',
+                  'sys_modules_name',
                   'modules_icon',
                   'created_by',
                   'updated_by',

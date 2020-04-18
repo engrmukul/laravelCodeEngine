@@ -14,8 +14,8 @@ class CreateSysModulesTable extends Migration
     public function up()
     {
         Schema::create('sys_modules', function (Blueprint $table) {
-            $table->bigInteger('id')->autoIncrement('true')->unsigned();
-            $table->string('name',100)->nullable(false);
+            $table->bigInteger('sys_modules_id')->autoIncrement('true')->unsigned();
+            $table->string('sys_modules_name',100)->nullable(false);
             $table->string('modules_icon',100)->nullable(false);
             $table->string('style_class',20)->nullable(true);
             $table->string('module_lang',100)->nullable(true);
