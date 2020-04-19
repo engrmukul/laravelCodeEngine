@@ -51,10 +51,10 @@ Laravel Project starter for laravel developer
     }
 
       /**
-       * php artisan migrate
-       * php artisan db:seed
+       * php artisan migrate:fresh --seed
        * php artisan make:module sys_modules
        * php artisan make:module sys_user_levels
+       * php artisan make:module sys_menus
        * php artisan make:module ( table name  )
        * php artisan serve
        * run http://127.0.0.1:8000/grid/units  
