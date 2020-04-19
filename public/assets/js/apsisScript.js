@@ -265,7 +265,7 @@ $('.autocomplete-search').each(function() {
             $('#shade-'+slug).val(hint);
         },
         onInvalidateSelection: function() {
-            console.log('invalids');
+           // console.log('invalids');
             $(this).val('');
         }
     });

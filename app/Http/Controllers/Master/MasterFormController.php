@@ -135,6 +135,7 @@ class MasterFormController extends Controller {
             'edit_field_key', 'edit_field_value',
             '_token', 'pkId', 'primaryKey',
             'updated_at','created_at','created_by');
+        //dd($post_data);
         foreach ($post_data as $field_name => $data){
             $form_num = count($post_data[$field_name]);
             break;

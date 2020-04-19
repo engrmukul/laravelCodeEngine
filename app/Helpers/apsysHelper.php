@@ -25,7 +25,7 @@ function __combo($slug = '', $data = array()){
             if ($multiple == 1) {
                 $attr .= 'multiple = "true"';
             }else{
-                $option_data[''] = '--Select an option--';
+                $option_data['0'] = '--Select an option--';
             }
             if (empty($name)) {
                 if ($multiple == 1) {

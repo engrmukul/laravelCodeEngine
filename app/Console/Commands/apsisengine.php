@@ -22,55 +22,6 @@ class apsisengine extends Command
         $moduleName = $this->argument('module');
 
         if ($this->confirm('Is ' . $moduleName . ' correct, do you wish to continue? [y|N]')) {
-            $controllerDir = 'app/Http/Controllers/';
-            $modelDir = 'app/Models/';
-            $viewDir = 'resources/views/';
-            /*=============================================Start Controller================================================*/
-            /*            $ctrl_stp1 = explode('_', $moduleName);
-            $ctrl_stp2 = '';
-            foreach ($ctrl_stp1 as $ctrl_stp){
-                $ctrl_stp2 .= ucfirst($ctrl_stp);
-            }
-            $controller_name = $ctrl_stp2 . 'Controller' . '.php';
-            $controllerFolder = $controllerDir . ucfirst($ctrl_stp2);
-            if (!is_dir($controllerFolder)) {
-                mkdir($controllerFolder, 0777, true);
-            } else {
-                $files = glob($controllerFolder . '/*');
-                foreach ($files as $file) {
-                    if (is_file($file)){
-                        unlink($file);
-                    }
-                }
-            }
-            $controllerPage = fopen($controllerFolder.'/'. $controller_name, 'w') or die('Cannot open file:  Controller');
-            $controllerContent = file_get_contents($controllerDir . 'Master/TemplateController.php');
-            fwrite($controllerPage, $controllerContent);
-            file_put_contents($controllerFolder.'/' . $controller_name, str_replace('[module]', ucfirst($moduleName), file_get_contents($controllerFolder.'/'
-                . $controller_name)));*/
-            /*=============================================Start Model================================================*/
-            /*            $modelFolder = $modelDir . ucfirst($moduleName);
-            if (!is_dir($modelFolder)) {
-                mkdir($modelFolder, 0777, true);
-            } else {
-                $files = glob($modelFolder . '/*');
-                foreach ($files as $file) {
-                    if (is_file($file)){
-                        unlink($file);
-                    }
-                }
-            }
-            $modelPage = fopen($modelFolder .'/'. ucfirst($moduleName) . '.php', 'w') or die('Cannot open file:  model');
-            $modelContent = file_get_contents($modelDir . 'Master/TemplateModel.php');
-            fwrite($modelPage, $modelContent);
-            file_put_contents($modelFolder. '/' . ucfirst($moduleName) . '.php', str_replace('[module]', $moduleName, file_get_contents($modelFolder. '/' . ucfirst($moduleName) . '.php')));*/
-            /*=============================================Start View================================================*/
-            /*            $viewFolder = $viewDir . ucfirst($moduleName);
-            if (!is_dir($viewFolder)) {
-                mkdir($viewFolder, 0777, true);
-            }*/
-            /*=============================================End View================================================*/
-            /*============================================= DB RECORD START ================================================*/
             $fields = DB::select('DESCRIBE ' . $moduleName);
             $masterEntryDetails = array();
             foreach ($fields as $key => $field) {
@@ -175,7 +126,6 @@ class apsisengine extends Command
 
             DB::table('sys_master_entry_details')->where('sys_master_entry_name', '=', $moduleName)->delete();
             DB::table('sys_master_entry_details')->insert($masterEntryDetails);
-//            dd(DB::getQueryLog());
             DB::table('sys_master_grid')->where('sys_master_grid_name', '=', $moduleName)->delete();
             DB::table('sys_master_grid')->insert($master_grid);
             echo $this->info("Congratulations!..") . "\n";

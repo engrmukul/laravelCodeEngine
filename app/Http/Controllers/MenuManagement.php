@@ -78,7 +78,7 @@ class MenuManagement extends Controller {
         foreach ($tree as $key => $val) {
             $active = '';
             if (isset($val->children)) {
-                if (in_array($val->id, $menusId)) {
+                if (in_array($val->sys_menus_id, $menusId)) {
                     $active = 'active';
                 } else {
                     $active = '';

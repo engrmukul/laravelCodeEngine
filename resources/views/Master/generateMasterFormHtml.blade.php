@@ -147,7 +147,8 @@
                                             'selected_value'=>$field_value,
                                             'attributes'=> array(
                                                 'class' => $class_name,
-                                                'required' => $required == 1 ? 'required' : ''
+                                                $required == 1 ? 'required' : ''
+                                                //'required' => $required == 1 ? 'required' : ''
                                             )
                                         ))
                                         {!! __combo($dropdown_slug, $arr) !!}

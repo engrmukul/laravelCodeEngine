@@ -14,8 +14,8 @@
             @include('includes.sidebar')
             <div id="page-wrapper" class="gray-bg">
                 @include('includes.header')
-                @include('includes.notifications')
-                <!-- @include('includes.password_notify') -->
+                {{-- @include('includes.notifications')--}}
+                {{-- @include('includes.password_notify')--}}
 
                 <!-- MAIN CONTAINER AREA -->
                 <div class="wrapper wrapper-content">

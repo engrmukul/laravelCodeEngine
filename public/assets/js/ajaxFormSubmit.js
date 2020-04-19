@@ -9,7 +9,7 @@ $(document).ready(function () {
         var action = $(this).attr('action');
         var url = action
         var formData = $(this).serialize() + "&id=" + $("#pkid").val();
-        console.log(formData);
+        //console.log(formData);
         var data = formData;
         $.ajax({
             type: 'POST',
@@ -18,7 +18,7 @@ $(document).ready(function () {
             url: url,
             data: data,
             success: function (data) {
-                console.log(data.status);
+                //console.log(data.status);
                 if (data.status == 'success') {
                     $("form").trigger('reset');
                     swal({
@@ -51,7 +51,7 @@ $(document).ready(function () {
         var id =  $("#pkid").val();
         var url = $("#getRawUrl").val();
         var data = {'id': id};
-        console.log(id);
+        //console.log(id);
         $.ajax({
             type: 'POST',
             cache: false,
@@ -60,9 +60,9 @@ $(document).ready(function () {
             data: data,
             success: function (data) {
                 var obj = jQuery.parseJSON(JSON.stringify(data));
-                console.log(obj);
+                //console.log(obj);
                 $.each(obj, function (key, value) {
-                    console.log(key);
+                    //console.log(key);
                     var className = '.' + key;
                     $(className).val(value);
                 });
@@ -75,7 +75,7 @@ $(document).ready(function () {
         var id =  $("#pkid").val();
         var url = $("#getRawUrl").val();
         var data = {'id': id};
-        console.log(id);
+        //console.log(id);
         $.ajax({
             type: 'POST',
             cache: false,
@@ -84,7 +84,7 @@ $(document).ready(function () {
             data: data,
             success: function (data) {
                 var obj = jQuery.parseJSON(JSON.stringify(data));
-                console.log(obj);
+                //console.log(obj);
                 var a = '';
                 $.each(obj, function (key, value) {
                     var className = '.' + key;
